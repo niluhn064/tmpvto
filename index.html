@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Try-On</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+</head>
+<body class="bg-light text-dark">
+    <div class="container">
+        <h1 class="my-4 text-primary">Virtual Try-On</h1>
+        <form method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="person_image" class="form-label">Upload Upper Body Image:</label>
+                <input type="file" class="form-control" id="person_image" name="person_image" required>
+            </div>
+            <div class="mb-3">
+                <label for="cloth_image" class="form-label">Upload Clothing Image:</label>
+                <input type="file" class="form-control" id="cloth_image" name="cloth_image" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Try On</button>
+        </form>
+        {% if result_image %}
+        <div class="mt-4">
+            <h2 class="text-success">Result:</h2>
+            <img src="{{ url_for('static', filename=result_image) }}" class="img-fluid" alt="Try-On Result">
+        </div>
+        {% endif %}
+    </div>
+</body>
+  </html>
+  
